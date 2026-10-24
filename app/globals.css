@@ -130,6 +130,74 @@ a {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+.data-wave__line {
+  stroke-dasharray: 8 18;
+  animation: data-flow 26s linear infinite, data-breathe 8s ease-in-out infinite;
+}
+
+.data-wave__line:nth-of-type(2) {
+  animation-delay: -7s, -2s;
+}
+
+.data-wave__line:nth-of-type(3) {
+  animation-delay: -13s, -4s;
+}
+
+.data-wave__line:nth-of-type(4) {
+  animation-delay: -19s, -1s;
+}
+
+.data-wave__line:nth-of-type(5) {
+  animation-delay: -4s, -5s;
+}
+
+.data-wave__particle {
+  fill: #7dd3fc;
+  filter: drop-shadow(0 0 7px #38bdf8);
+  animation: data-pulse 3.4s ease-in-out infinite;
+}
+
+.data-wave__particle--delay {
+  fill: #fdba74;
+  filter: drop-shadow(0 0 7px #fb923c);
+  animation-delay: -1.7s;
+}
+
+@keyframes data-flow {
+  to {
+    stroke-dashoffset: -260;
+  }
+}
+
+@keyframes data-breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes data-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .data-wave__line,
+  .data-wave__particle {
+    animation: none;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

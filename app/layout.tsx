@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Talent LMS",
+  title: "Interactive Learning Experience",
   description: "Modern learning platform for teams and growing organizations.",
 };
 
