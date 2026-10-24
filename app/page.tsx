@@ -20,7 +20,7 @@ const learningSignals = [
 
 export default function HomePage() {
   return (
-    <main className="relative isolate min-h-screen overflow-hidden bg-[#07111f] font-[family-name:var(--font-geist-sans)] text-white">
+    <main className="relative isolate min-h-screen overflow-hidden bg-[#07111f] font-[family-name:var(--font-league-spartan)] text-white">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"

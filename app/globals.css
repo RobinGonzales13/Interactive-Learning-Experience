@@ -7,7 +7,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-league-spartan);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -128,6 +128,17 @@ a {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+.learning-shell.dark {
+  --sidebar: #091422;
+  --sidebar-foreground: #cbd5e1;
+  --sidebar-primary: #7dd3fc;
+  --sidebar-primary-foreground: #07111f;
+  --sidebar-accent: rgb(56 189 248 / 10%);
+  --sidebar-accent-foreground: #e0f2fe;
+  --sidebar-border: rgb(255 255 255 / 8%);
+  --sidebar-ring: #38bdf8;
 }
 
 .data-wave__line {

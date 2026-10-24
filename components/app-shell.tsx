@@ -18,30 +18,63 @@ import {
 
 export function AppShell({
   title,
+  dark = false,
   children,
 }: {
   title: string;
+  dark?: boolean;
   children: ReactNode;
 }) {
   return (
-    <SidebarProvider>
+    <SidebarProvider
+      className={dark ? "dark learning-shell bg-[#091422]" : undefined}
+    >
       <AppSidebar />
-      <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b border-slate-200 bg-white/80 backdrop-blur-sm">
+      <SidebarInset
+        className={
+          dark
+            ? "m-0 min-h-svh rounded-none bg-[#07111f] text-white shadow-none md:m-2 md:rounded-2xl"
+            : undefined
+        }
+      >
+        <header
+          className={`flex h-16 shrink-0 items-center gap-2 border-b backdrop-blur-sm ${
+            dark
+              ? "border-white/[0.08] bg-[#0b1728]/85 text-slate-300"
+              : "border-slate-200 bg-white/80"
+          }`}
+        >
           <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
+            <SidebarTrigger
+              className={`-ml-1 ${
+                dark
+                  ? "text-slate-400 hover:bg-white/[0.06] hover:text-white"
+                  : ""
+              }`}
+            />
             <Separator
               orientation="vertical"
-              className="mr-2 data-vertical:h-4 data-vertical:self-auto"
+              className={`mr-2 data-vertical:h-4 data-vertical:self-auto ${
+                dark ? "bg-white/10" : ""
+              }`}
             />
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="/dashboard">Talent LMS</BreadcrumbLink>
+                  <BreadcrumbLink
+                    className={dark ? "text-slate-400 hover:text-white" : ""}
+                    href="/dashboard"
+                  >
+                    Innodata
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>{title}</BreadcrumbPage>
+                  <BreadcrumbPage
+                    className={dark ? "text-slate-200" : ""}
+                  >
+                    {title}
+                  </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>

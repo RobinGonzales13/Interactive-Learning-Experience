@@ -14,13 +14,18 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { BookUserIcon, LayoutDashboardIcon, TerminalIcon } from "lucide-react"
+import Link from "next/link"
+import {
+  BookUserIcon,
+  LayoutDashboardIcon,
+  Orbit,
+} from "lucide-react"
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Alex Morgan",
+    email: "Learning profile",
+    avatar: "",
   },
   navMain: [
     {
@@ -47,13 +52,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" render={<a href="#" />}>
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                <TerminalIcon className="size-4" />
+            <SidebarMenuButton size="lg" render={<Link href="/dashboard" />}>
+              <div className="flex aspect-square size-8 items-center justify-center rounded-lg border border-sky-300/20 bg-sky-400/10 text-sky-300">
+                <Orbit className="size-4" />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">Acme Inc</span>
-                <span className="truncate text-xs">Enterprise</span>
+                <span className="truncate font-semibold">Innodata</span>
+                <span className="truncate text-xs text-sidebar-foreground/60">
+                  Learning experience
+                </span>
               </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
