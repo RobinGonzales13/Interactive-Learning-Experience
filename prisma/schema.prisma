@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  EMPLOYEE
+  ADMIN
+}
+
+enum CourseStatus {
+  DRAFT
+  PUBLISHED
+}
+
+enum AssignmentStatus {
+  ASSIGNED
+  IN_PROGRESS
+  COMPLETED
+}
+
+model User {
+  id          String       @id @default(cuid())
+  entraId     String?      @unique
+  email       String       @unique
+  name        String
+  role        UserRole     @default(EMPLOYEE)
+  assignments Assignment[]
+  quizAttempts QuizAttempt[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Course {
+  id          String       @id @default(cuid())
+  title       String
+  description String       @default("")
+  status      CourseStatus @default(DRAFT)
+  lessons     Lesson[]
+  assignments Assignment[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Lesson {
+  id        String   @id @default(cuid())
+  title     String
+  content   String   @default("")
+  order     Int
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([courseId, order])
+}
+
+model Assignment {
+  id        String           @id @default(cuid())
+  userId    String
+  courseId  String
+  status    AssignmentStatus @default(ASSIGNED)
+  assignedAt DateTime        @default(now())
+  completedAt DateTime?
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course    Course           @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
+}
+
+model QuizAttempt {
+  id          String   @id @default(cuid())
+  userId      String
+  quizTitle   String
+  score       Float
+  passed      Boolean
+  submittedAt DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
