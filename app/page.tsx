@@ -29,7 +29,7 @@ export default function HomePage() {
         <div className="absolute -right-40 top-24 h-[30rem] w-[30rem] rounded-full bg-orange-500/10 blur-[140px]" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.045)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_88%)]" />
         <svg
-          className="data-wave motion-safe:animate-pulse motion-reduce:animate-none absolute inset-x-0 top-0 h-[750px] w-full opacity-80"
+          className="data-wave absolute inset-x-0 top-0 h-[750px] w-full opacity-80"
           viewBox="0 0 1440 750"
           fill="none"
           preserveAspectRatio="none"
@@ -186,9 +186,9 @@ export default function HomePage() {
                 className="size-4 transition-transform group-hover:translate-x-1"
               />
             </Link>
-            <a
+            <Link
               className="group inline-flex items-center gap-2.5 px-2 py-3 text-sm font-medium text-slate-300 transition hover:text-white"
-              href="/"
+              href="#platform"
             >
               <CirclePlay
                 aria-hidden="true"
@@ -196,7 +196,7 @@ export default function HomePage() {
                 strokeWidth={1.6}
               />
               See how it works
-            </a>
+            </Link>
           </div>
 
           <div className="mt-12 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-white/[0.08] pt-6 text-xs text-slate-500">

@@ -192,7 +192,10 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .data-wave__line,
+  .data-wave__line {
+    animation: data-flow 60s linear infinite;
+  }
+
   .data-wave__particle {
     animation: none;
   }
