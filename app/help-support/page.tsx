@@ -1,7 +1,12 @@
-import { BlankRoutePage } from "@/components/blank-route-page";
+import { AppShell } from "@/components/app-shell";
+import { HelpSupportContent } from "@/components/help-support-content";
 
 export const metadata = { title: "Help & Support" };
 
 export default function HelpSupportPage() {
-  return <BlankRoutePage title="Help & Support" />;
+  return (
+    <AppShell title="Help & Support" dark>
+      <HelpSupportContent />
+    </AppShell>
+  );
 }

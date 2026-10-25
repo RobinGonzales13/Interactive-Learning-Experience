@@ -1,7 +1,12 @@
-import { BlankRoutePage } from "@/components/blank-route-page";
+import { AppShell } from "@/components/app-shell";
+import { ScheduleCalendarContent } from "@/components/schedule-calendar-content";
 
 export const metadata = { title: "Schedule & Calendar" };
 
 export default function ScheduleCalendarPage() {
-  return <BlankRoutePage title="Schedule & Calendar" />;
+  return (
+    <AppShell title="Schedule & Calendar" dark>
+      <ScheduleCalendarContent />
+    </AppShell>
+  );
 }
