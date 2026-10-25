@@ -1,6 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation";
+import { useAppearance } from "@/components/appearance-provider";
 
 import {
   Avatar,
@@ -22,7 +23,14 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { BadgeCheckIcon, BellIcon, ChevronsUpDownIcon, LogOutIcon } from "lucide-react"
+import {
+  BadgeCheckIcon,
+  BellIcon,
+  ChevronsUpDownIcon,
+  LogOutIcon,
+  MoonIcon,
+  SunIcon,
+} from "lucide-react"
 
 export function NavUser({
   user,
@@ -35,6 +43,8 @@ export function NavUser({
 }) {
   const router = useRouter();
   const { isMobile } = useSidebar();
+  const { appearance, toggleAppearance } = useAppearance();
+  const isDark = appearance === "dark";
   const initials = user.name
     .split(" ")
     .map((part) => part[0])
@@ -92,6 +102,31 @@ export function NavUser({
                 Notifications
               </DropdownMenuItem>
             </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <div className="flex items-center justify-between gap-3 px-2 py-2">
+              <span className="flex items-center gap-2 text-sm font-medium">
+                {isDark ? (
+                  <MoonIcon className="size-4" />
+                ) : (
+                  <SunIcon className="size-4" />
+                )}
+                {isDark ? "Dark Mode" : "Light Mode"}
+              </span>
+              <button
+                type="button"
+                role="switch"
+                aria-label="Appearance"
+                aria-checked={isDark}
+                onClick={toggleAppearance}
+                className="relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border border-border bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                <span
+                  className={`size-4 rounded-full bg-foreground shadow-sm transition-transform ${
+                    isDark ? "translate-x-[22px]" : "translate-x-1"
+                  }`}
+                />
+              </button>
+            </div>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => router.push("/")}>
               <LogOutIcon />

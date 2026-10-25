@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import { Geist_Mono, League_Spartan } from "next/font/google";
+import { Inter } from "next/font/google";
+import { AppearanceProvider } from "@/components/appearance-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
-const leagueSpartan = League_Spartan({
-  variable: "--font-league-spartan",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -22,10 +18,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${leagueSpartan.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${inter.className} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col font-[family-name:var(--font-league-spartan)]">
-        <TooltipProvider>{children}</TooltipProvider>
+      <body className="min-h-full flex flex-col">
+        <AppearanceProvider>
+          <TooltipProvider>{children}</TooltipProvider>
+        </AppearanceProvider>
       </body>
     </html>
   );

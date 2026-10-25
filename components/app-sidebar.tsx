@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   BookOpen,
@@ -12,7 +13,6 @@ import {
   ClipboardCheck,
   FolderOpen,
   LayoutDashboard,
-  Orbit,
   UserRound,
 } from "lucide-react";
 
@@ -125,12 +125,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" render={<Link href="/dashboard" />}>
               <div className="flex aspect-square size-8 items-center justify-center rounded-lg border border-sky-300/20 bg-sky-400/10 text-sky-300">
-                <Orbit className="size-4" />
+                <Image
+                  alt=""
+                  className="size-6 object-contain"
+                  height={202}
+                  src="/innodata-logomark.png"
+                  width={202}
+                />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">Innodata</span>
                 <span className="truncate text-xs text-sidebar-foreground/60">
-                  Learning experience
+                  ILE
                 </span>
               </div>
             </SidebarMenuButton>

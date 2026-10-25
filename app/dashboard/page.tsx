@@ -23,7 +23,7 @@ export const metadata = {
 
 export default function DashboardPage() {
   return (
-    <AppShell title="Dashboard" dark>
+    <AppShell title="Interactive Learning Experience" dark>
       <main className="relative isolate flex min-h-[calc(100svh-4rem)] flex-none flex-col overflow-visible bg-[#07111f] text-white md:h-[calc(100svh-5rem)] md:min-h-0 md:overflow-hidden">
         <div
           aria-hidden="true"

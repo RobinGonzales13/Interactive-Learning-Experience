@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowDownRight,
   ArrowRight,
@@ -8,7 +9,6 @@ import {
   BrainCircuit,
   Check,
   CirclePlay,
-  Orbit,
   Sparkles,
 } from "lucide-react";
 
@@ -20,7 +20,7 @@ const learningSignals = [
 
 export default function HomePage() {
   return (
-    <main className="relative isolate min-h-screen overflow-hidden bg-[#07111f] font-[family-name:var(--font-league-spartan)] text-white">
+    <main className="landing-page relative isolate min-h-screen overflow-hidden bg-[#07111f] font-sans text-white">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
@@ -100,12 +100,18 @@ export default function HomePage() {
 
       <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 sm:px-10 lg:px-12">
         <Link
-          aria-label="Talent home"
+          aria-label="Innodata home"
           className="group inline-flex items-center gap-3"
           href="/"
         >
           <span className="relative flex size-10 items-center justify-center rounded-xl border border-sky-300/20 bg-sky-400/10 text-sky-300 shadow-[0_0_28px_rgba(56,189,248,0.12)]">
-            <Orbit aria-hidden="true" className="size-5" strokeWidth={1.8} />
+            <Image
+              alt=""
+              className="size-8 object-contain"
+              height={202}
+              src="/innodata-logomark.png"
+              width={202}
+            />
             <span className="absolute -right-1 -top-1 size-2.5 rounded-full border-2 border-[#07111f] bg-orange-400" />
           </span>
           <span className="flex flex-col leading-none">
