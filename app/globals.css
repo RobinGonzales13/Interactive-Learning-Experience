@@ -285,6 +285,100 @@ html[data-appearance="light"] [class*="divide-white/"] {
   animation-delay: -1.7s;
 }
 
+.dashboard-tile {
+  position: relative;
+  z-index: 0;
+  transform: translateY(0) scale(1);
+  transition:
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dashboard-tile:hover,
+.dashboard-tile:focus-visible {
+  z-index: 1;
+  transform: translateY(-9px) scale(1.025);
+  box-shadow:
+    0 26px 56px rgb(0 0 0 / 34%),
+    0 0 32px rgb(56 189 248 / 16%);
+}
+
+.dashboard-profile-tile:hover .dashboard-profile-orbit,
+.dashboard-profile-tile:focus-visible .dashboard-profile-orbit {
+  animation: dashboard-profile-orbit-pulse 1.8s ease-in-out infinite;
+}
+
+.dashboard-tile:focus-visible {
+  outline: 2px solid rgb(125 211 252 / 80%);
+  outline-offset: 3px;
+}
+
+.dashboard-tile:active {
+  transform: translateY(0) scale(0.985);
+  transition-duration: 90ms;
+}
+
+.dashboard-tile.dashboard-course-tile {
+  animation: dashboard-course-float 1.8s ease-in-out infinite;
+  will-change: translate;
+}
+
+.dashboard-tile.dashboard-course-tile:hover {
+  border-color: rgb(251 146 60 / 55%);
+  box-shadow:
+    0 20px 46px rgb(0 0 0 / 28%),
+    0 0 32px rgb(251 146 60 / 28%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-tile {
+    transition: none;
+  }
+
+  .dashboard-tile.dashboard-course-tile {
+    animation: none;
+    will-change: auto;
+  }
+
+  .dashboard-profile-tile:hover .dashboard-profile-orbit,
+  .dashboard-profile-tile:focus-visible .dashboard-profile-orbit {
+    animation: none;
+  }
+
+  .dashboard-tile:hover,
+  .dashboard-tile:focus-visible,
+  .dashboard-tile:active {
+    transform: none;
+  }
+}
+
+@keyframes dashboard-profile-orbit-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+    box-shadow: 0 0 0 rgb(56 189 248 / 0%);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.16);
+    box-shadow: 0 0 24px rgb(56 189 248 / 24%);
+  }
+}
+
+@keyframes dashboard-course-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -14px;
+  }
+}
+
 @keyframes data-flow {
   to {
     stroke-dashoffset: -260;

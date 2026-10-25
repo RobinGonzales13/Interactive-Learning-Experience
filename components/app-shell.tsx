@@ -22,10 +22,12 @@ import {
 export function AppShell({
   title,
   dark = false,
+  actions,
   children,
 }: {
   title: string;
   dark?: boolean;
+  actions?: ReactNode;
   children: ReactNode;
 }) {
   const { appearance } = useAppearance();
@@ -96,6 +98,7 @@ export function AppShell({
               </BreadcrumbList>
             </Breadcrumb>
           </div>
+          {actions ? <div className="ml-auto px-4">{actions}</div> : null}
         </header>
         {children}
       </SidebarInset>
