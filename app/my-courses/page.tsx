@@ -1,7 +1,7 @@
-import { BlankRoutePage } from "@/components/blank-route-page";
+import { MyCoursesPage } from "@/components/my-courses-page";
 
-export const metadata = { title: "My courses" };
+export const metadata = { title: "My Courses" };
 
-export default function MyCoursesPage() {
-  return <BlankRoutePage title="My courses" />;
+export default function CoursesPage() {
+  return <MyCoursesPage />;
 }

@@ -1,7 +1,14 @@
-import { BlankRoutePage } from "@/components/blank-route-page";
+import { ClipboardCheck } from "lucide-react";
+import { DevelopmentPage } from "@/components/development-page";
 
 export const metadata = { title: "Quiz Center" };
 
 export default function QuizCenterPage() {
-  return <BlankRoutePage title="Quiz Center" />;
+  return (
+    <DevelopmentPage
+      title="Quiz Center"
+      description="A dedicated space for knowledge checks and interactive quizzes is on the way."
+      icon={ClipboardCheck}
+    />
+  );
 }

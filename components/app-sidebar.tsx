@@ -11,6 +11,7 @@ import {
   CircleHelp,
   ClipboardCheck,
   FolderOpen,
+  LayoutDashboard,
   Orbit,
   UserRound,
 } from "lucide-react";
@@ -39,6 +40,11 @@ const navigationGroups: NavigationGroups = [
   {
     title: "Learning Path",
     items: [
+      {
+        title: "Dashboard",
+        url: "/dashboard",
+        icon: <LayoutDashboard />,
+      },
       {
         title: "My courses",
         url: "/my-courses",
@@ -70,7 +76,6 @@ const navigationGroups: NavigationGroups = [
         items: [
           { title: "Overview", url: "/my-progress/overview" },
           { title: "Courses", url: "/my-progress/courses" },
-          { title: "Badges", url: "/my-progress/badges" },
           { title: "Certificates", url: "/my-progress/certificates" },
           { title: "Timeline", url: "/my-progress/timeline" },
         ],

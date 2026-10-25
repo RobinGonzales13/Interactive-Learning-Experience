@@ -1,7 +1,14 @@
-import { BlankRoutePage } from "@/components/blank-route-page";
+import { FolderOpen } from "lucide-react";
+import { DevelopmentPage } from "@/components/development-page";
 
 export const metadata = { title: "Catalog" };
 
 export default function CatalogPage() {
-  return <BlankRoutePage title="Catalog" />;
+  return (
+    <DevelopmentPage
+      title="Catalog"
+      description="We’re curating a learning library to help you discover your next course and build new skills."
+      icon={FolderOpen}
+    />
+  );
 }

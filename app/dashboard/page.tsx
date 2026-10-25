@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
-import { Button } from "@/components/ui/button";
+import { NotificationDrawer } from "@/components/notification-drawer";
 import { Input } from "@/components/ui/input";
 import {
   ArrowRight,
   ArrowUpRight,
-  Bell,
   BookOpen,
   CalendarDays,
   Clock3,
@@ -25,7 +24,7 @@ export const metadata = {
 export default function DashboardPage() {
   return (
     <AppShell title="Dashboard" dark>
-      <main className="relative isolate flex min-h-0 flex-1 flex-col overflow-hidden bg-[#07111f] text-white">
+      <main className="relative isolate flex min-h-[calc(100svh-4rem)] flex-none flex-col overflow-visible bg-[#07111f] text-white md:h-[calc(100svh-5rem)] md:min-h-0 md:overflow-hidden">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
@@ -35,11 +34,11 @@ export default function DashboardPage() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.025)_1px,transparent_1px)] bg-[size:64px_64px]" />
         </div>
 
-        <div className="my-auto mx-auto flex h-[95%] w-[95%] max-w-none flex-col gap-4 py-4 sm:gap-5 sm:py-5">
-          <header className="flex shrink-0 flex-wrap items-center justify-between gap-4">
+        <div className="mx-auto flex h-auto w-[90%] max-w-none flex-col gap-5 self-center py-4 sm:py-5 md:h-[90%] lg:my-auto">
+          <header className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex min-w-0 flex-1 flex-wrap items-center justify-between gap-4">
               <h1 className="text-3xl font-semibold uppercase tracking-[0.04em] text-sky-300 sm:text-4xl">
-                Dashboard
+                Welcome Back!
               </h1>
               <div className="flex w-full max-w-[430px] items-center gap-3 sm:ml-auto sm:w-auto sm:flex-1">
                 <label className="relative block min-w-0 flex-1">
@@ -54,33 +53,18 @@ export default function DashboardPage() {
                     type="search"
                   />
                 </label>
-                <div className="relative">
-                  <Button
-                    aria-label="Notifications, 2 unread"
-                    className="size-10 rounded-xl border border-white/10 bg-[#0b1728]/80 text-slate-300 hover:border-sky-300/25 hover:bg-sky-300/10 hover:text-white"
-                    size="icon"
-                    variant="outline"
-                  >
-                    <Bell aria-hidden="true" className="size-[18px]" />
-                  </Button>
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute -right-1 -top-1 flex size-[18px] items-center justify-center rounded-full border-2 border-[#07111f] bg-orange-400 text-[9px] font-bold text-[#20140c]"
-                  >
-                    2
-                  </span>
-                </div>
+                <NotificationDrawer />
               </div>
             </div>
           </header>
 
           <section
             aria-label="Learning dashboard"
-            className="grid min-h-0 flex-1 grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-12 lg:grid-rows-[repeat(4,minmax(0,1fr))]"
+            className="grid flex-1 grid-cols-1 gap-3.5 sm:grid-cols-2 lg:min-h-0 lg:grid-cols-12 lg:grid-rows-[repeat(4,minmax(0,1fr))]"
           >
             <Link
               aria-label="View profile for Alex Morgan"
-              className="group relative isolate flex min-h-[250px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-sky-300/15 bg-gradient-to-br from-[#12304a] via-[#10283f] to-[#0e1b2b] p-6 text-center transition hover:border-sky-300/30 sm:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-h-0"
+              className="group relative isolate flex min-h-[250px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-sky-300/15 bg-gradient-to-br from-[#12304a] via-[#10283f] to-[#0e1b2b] p-6 text-center transition hover:border-sky-300/30 sm:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-span-2 lg:row-start-1"
               href="/profile"
             >
               <div
@@ -191,14 +175,13 @@ export default function DashboardPage() {
               />
             </Link>
 
-            <Link
-              aria-label="View 23 badges earned"
-              className="flex min-h-[92px] flex-col items-center justify-center rounded-2xl border border-white/[0.08] bg-[#101d2e] p-3 text-center transition hover:border-sky-300/25 hover:bg-[#122239] sm:col-span-1 lg:col-span-2 lg:col-start-5 lg:row-start-3"
-              href="/my-progress/badges"
+            <div
+              aria-label="23 badges earned"
+              className="flex min-h-[92px] flex-col items-center justify-center rounded-2xl border border-white/[0.08] bg-[#101d2e] p-3 text-center sm:col-span-1 lg:col-span-2 lg:col-start-5 lg:row-start-3"
             >
               <p className="text-2xl font-semibold text-sky-300">23+</p>
               <p className="mt-1 text-[10px] text-slate-400">badges earned</p>
-            </Link>
+            </div>
 
             <Link
               aria-label="Open Quiz Center"
@@ -242,12 +225,12 @@ export default function DashboardPage() {
 
             <Link
               aria-label="View 2 pending courses"
-              className="group relative isolate flex min-h-[500px] flex-col overflow-hidden rounded-2xl border border-sky-300/15 bg-gradient-to-b from-[#102a42] via-[#101d2e] to-[#111a27] p-5 transition hover:border-sky-300/25 sm:col-span-2 lg:col-span-4 lg:col-start-9 lg:row-span-4 lg:row-start-1 lg:min-h-0"
+              className="group relative isolate flex min-h-[460px] flex-col overflow-hidden rounded-2xl border border-sky-300/15 bg-gradient-to-b from-[#102a42] via-[#101d2e] to-[#111a27] p-5 transition hover:border-sky-300/25 sm:col-span-2 lg:col-span-4 lg:col-start-9 lg:row-span-4 lg:row-start-1 lg:min-h-0"
               href="/my-courses"
             >
               <div className="absolute -right-16 -top-24 -z-10 size-64 rounded-full bg-sky-400/[0.1] blur-3xl" />
               <div className="flex flex-1 flex-col">
-                <div className="relative flex min-h-[220px] flex-1 items-center justify-center overflow-hidden rounded-xl border border-sky-200/10 bg-[#0a1728] lg:min-h-0">
+                <div className="relative flex min-h-[220px] flex-1 items-center justify-center overflow-hidden rounded-xl border border-sky-200/10 bg-[#0a1728]">
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.06)_1px,transparent_1px)] bg-[size:28px_28px]" />
                   <div className="absolute -right-10 top-4 size-40 rounded-full border border-sky-300/10" />
                   <div className="absolute -right-2 top-12 size-28 rounded-full border border-orange-300/10" />
