@@ -1,10 +1,22 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+  BookOpen,
+  Brain,
+  CalendarDays,
+  ChartNoAxesColumnIncreasing,
+  CircleHelp,
+  ClipboardCheck,
+  FolderOpen,
+  Orbit,
+  UserRound,
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavUser } from "@/components/nav-user"
-import { usePathname } from "next/navigation"
+import { NavMain } from "@/components/nav-main";
+import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -13,39 +25,93 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import Link from "next/link"
-import {
-  BookUserIcon,
-  LayoutDashboardIcon,
-  Orbit,
-} from "lucide-react"
+} from "@/components/ui/sidebar";
 
-const data = {
-  user: {
-    name: "Alex Morgan",
-    email: "Learning profile",
-    avatar: "",
+type NavigationGroups = Parameters<typeof NavMain>[0]["groups"];
+
+const user = {
+  name: "Alex Morgan",
+  email: "Learning profile",
+  avatar: "",
+};
+
+const navigationGroups: NavigationGroups = [
+  {
+    title: "Learning Path",
+    items: [
+      {
+        title: "My courses",
+        url: "/my-courses",
+        icon: <BookOpen />,
+      },
+      {
+        title: "Catalog",
+        url: "/catalog",
+        icon: <FolderOpen />,
+      },
+      {
+        title: "Quiz Center",
+        url: "/quiz-center",
+        icon: <ClipboardCheck />,
+      },
+    ],
   },
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-      icon: <LayoutDashboardIcon />,
-    },
-    {
-      title: "My Profile",
-      url: "/profile",
-      icon: <BookUserIcon />,
-    },
-  ],
-}
+  {
+    title: "Performance",
+    items: [
+      {
+        title: "My Profile",
+        url: "/profile",
+        icon: <UserRound />,
+      },
+      {
+        title: "My Progress",
+        icon: <ChartNoAxesColumnIncreasing />,
+        items: [
+          { title: "Overview", url: "/my-progress/overview" },
+          { title: "Courses", url: "/my-progress/courses" },
+          { title: "Badges", url: "/my-progress/badges" },
+          { title: "Certificates", url: "/my-progress/certificates" },
+          { title: "Timeline", url: "/my-progress/timeline" },
+        ],
+      },
+      {
+        title: "Skills Assessment",
+        url: "/skills-assessment",
+        icon: <Brain />,
+      },
+    ],
+  },
+  {
+    title: "Resources",
+    items: [
+      {
+        title: "Schedule & Calendar",
+        url: "/schedule-calendar",
+        icon: <CalendarDays />,
+      },
+      {
+        title: "Help & Support",
+        url: "/help-support",
+        icon: <CircleHelp />,
+      },
+    ],
+  },
+];
+
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const pathname = usePathname()
-  const navMain = data.navMain.map((item) => ({
-    ...item,
-    isActive: pathname === item.url,
-  }))
+  const pathname = usePathname();
+  const groups = navigationGroups.map((group) => ({
+    ...group,
+    items: group.items.map((item) => ({
+      ...item,
+      isActive: item.url === pathname,
+      items: item.items?.map((subItem) => ({
+        ...subItem,
+        isActive: subItem.url === pathname,
+      })),
+    })),
+  }));
 
   return (
     <Sidebar variant="inset" {...props}>
@@ -66,12 +132,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
-        <NavMain items={navMain} />
+      <SidebarContent className="gap-0 overflow-y-auto">
+        <NavMain groups={groups} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
