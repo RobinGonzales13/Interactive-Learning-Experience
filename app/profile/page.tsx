@@ -9,7 +9,9 @@ import {
   ShieldCheck,
   UserRound,
 } from "lucide-react";
+import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
+import { EarnedBadgesDrawer } from "@/components/earned-badges-drawer";
 import { Button } from "@/components/ui/button";
 
 export const instant = false;
@@ -30,6 +32,7 @@ const milestones = [
     icon: BadgeCheck,
     color: "text-orange-200",
     border: "border-orange-300/15",
+    href: "/my-progress/certificates",
   },
   {
     label: "Completed courses",
@@ -37,6 +40,7 @@ const milestones = [
     icon: BookOpenCheck,
     color: "text-sky-200",
     border: "border-sky-300/15",
+    href: "/my-progress/courses",
   },
   {
     label: "Skills",
@@ -44,6 +48,7 @@ const milestones = [
     icon: BriefcaseBusiness,
     color: "text-sky-200",
     border: "border-sky-300/15",
+    href: "/skills-assessment",
   },
   {
     label: "Badges",
@@ -51,6 +56,7 @@ const milestones = [
     icon: Award,
     color: "text-orange-200",
     border: "border-orange-300/15",
+    href: null,
   },
 ];
 
@@ -103,22 +109,49 @@ export default function ProfilePage() {
                   Milestones
                 </p>
                 <div className="grid flex-1 grid-cols-2 gap-3 sm:gap-4">
-                  {milestones.map(({ label, value, icon: Icon, color, border }) => (
-                    <article
-                      className={`flex min-h-28 flex-col items-center justify-center rounded-xl border ${border} bg-[#101d2e]/80 p-4 text-center transition hover:bg-[#14243a]`}
-                      key={label}
-                    >
-                      <Icon
-                        aria-hidden="true"
-                        className={`mb-2 size-4 ${color}`}
-                        strokeWidth={1.7}
-                      />
-                      <p className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                        {value}
-                      </p>
-                      <p className="mt-1 text-[11px] text-slate-400">{label}</p>
-                    </article>
-                  ))}
+                  {milestones.map(
+                    ({ label, value, icon: Icon, color, border, href }) => {
+                      const cardClassName = `@container flex min-h-28 flex-col items-center justify-center rounded-xl border ${border} bg-[#101d2e]/80 p-4 text-center transition hover:bg-[#14243a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1422]`;
+                      const cardContents = (
+                        <>
+                          <Icon
+                            aria-hidden="true"
+                            className={`mb-[clamp(0.35rem,2cqi,0.75rem)] size-[clamp(1.25rem,8cqi,2.25rem)] ${color}`}
+                            strokeWidth={1.7}
+                          />
+                          <p className="text-[clamp(1.75rem,14cqi,3.5rem)] font-semibold tracking-tight text-white">
+                            {value}
+                          </p>
+                          <p className="mt-1 text-[clamp(0.875rem,6cqi,1.5rem)] text-slate-400">
+                            {label}
+                          </p>
+                        </>
+                      );
+
+                      if (href === null) {
+                        return (
+                          <EarnedBadgesDrawer
+                            ariaLabel={`${label}: ${value}. View earned badges`}
+                            className={cardClassName}
+                            key={label}
+                          >
+                            {cardContents}
+                          </EarnedBadgesDrawer>
+                        );
+                      }
+
+                      return (
+                      <Link
+                        aria-label={`${label}: ${value}`}
+                        className={cardClassName}
+                        href={href}
+                        key={label}
+                      >
+                        {cardContents}
+                      </Link>
+                      );
+                    },
+                  )}
                 </div>
               </div>
             </div>

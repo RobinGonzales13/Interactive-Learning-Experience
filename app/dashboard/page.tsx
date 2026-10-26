@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
+import { EarnedBadgesDrawer } from "@/components/earned-badges-drawer";
 import { NotificationDrawer } from "@/components/notification-drawer";
 import {
   ArrowRight,
   ArrowUpRight,
+  Award,
   BookOpen,
   CalendarDays,
   ChevronLeft,
@@ -161,13 +163,21 @@ export default function DashboardPage() {
               />
             </Link>
 
-            <div
-              aria-label="23 badges earned"
-              className="dashboard-tile flex min-h-[110px] flex-col items-center justify-center rounded-2xl border border-white/[0.08] bg-[#101d2e] p-3 text-center sm:col-span-1 lg:col-span-1 lg:col-start-3 lg:row-start-2"
+            <EarnedBadgesDrawer
+              ariaLabel="23 badges earned. View earned badges"
+              className="dashboard-tile @container flex min-h-[110px] flex-col items-center justify-center rounded-2xl border border-white/[0.08] bg-[#101d2e] p-3 text-center transition hover:border-orange-300/20 hover:bg-[#14243a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#07111f] sm:col-span-1 lg:col-span-1 lg:col-start-3 lg:row-start-2"
             >
-              <p className="text-2xl font-semibold text-sky-300">23+</p>
-              <p className="mt-1 text-[10px] text-slate-400">badges earned</p>
-            </div>
+              <Award
+                aria-hidden="true"
+                className="mb-1 size-[clamp(1.125rem,9cqi,1.75rem)] text-orange-200"
+              />
+              <p className="text-[clamp(1.5rem,14cqi,2rem)] font-semibold text-sky-300">
+                23+
+              </p>
+              <p className="mt-1 text-[clamp(0.625rem,6cqi,0.875rem)] text-slate-400">
+                badges earned
+              </p>
+            </EarnedBadgesDrawer>
 
             <Link
               aria-label="Open Quiz Center"
