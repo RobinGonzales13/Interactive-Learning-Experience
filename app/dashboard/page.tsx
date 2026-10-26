@@ -16,6 +16,8 @@ export const metadata = {
   title: "Dashboard",
 };
 
+export const instant = false;
+
 export default function DashboardPage() {
   return (
     <AppShell title="Dashboard" dark actions={<NotificationDrawer />}>

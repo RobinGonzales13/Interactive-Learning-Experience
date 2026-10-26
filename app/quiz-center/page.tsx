@@ -3,6 +3,8 @@ import { DevelopmentPage } from "@/components/development-page";
 
 export const metadata = { title: "Quiz Center" };
 
+export const instant = false;
+
 export default function QuizCenterPage() {
   return (
     <DevelopmentPage

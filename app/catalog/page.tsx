@@ -3,6 +3,8 @@ import { DevelopmentPage } from "@/components/development-page";
 
 export const metadata = { title: "Catalog" };
 
+export const instant = false;
+
 export default function CatalogPage() {
   return (
     <DevelopmentPage

@@ -142,13 +142,13 @@ export default function HomePage() {
         <div className="flex items-center gap-3">
           <Link
             className="hidden rounded-lg px-4 py-2.5 text-[13px] font-medium text-slate-300 transition hover:text-white sm:inline-flex"
-            href="/dashboard"
+            href="/login"
           >
             Log in
           </Link>
           <Link
             className="group inline-flex items-center gap-2 rounded-lg border border-sky-300/20 bg-sky-400/10 px-4 py-2.5 text-[13px] font-semibold text-sky-100 transition hover:border-sky-300/40 hover:bg-sky-400/15"
-            href="/"
+            href="/login"
           >
             Get started
             <ArrowUpRight
@@ -184,7 +184,7 @@ export default function HomePage() {
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <Link
               className="group inline-flex items-center gap-3 rounded-xl bg-sky-300 px-5 py-3.5 text-sm font-semibold text-[#061321] shadow-[0_0_30px_rgba(56,189,248,0.2)] transition hover:bg-sky-200"
-              href="/"
+              href="/login"
             >
               Explore the platform
               <ArrowRight

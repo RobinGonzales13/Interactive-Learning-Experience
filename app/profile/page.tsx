@@ -12,6 +12,8 @@ import {
 import { AppShell } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
 
+export const instant = false;
+
 const companyInfo = [
   { label: "Delivery unit", value: "Not provided", icon: BriefcaseBusiness },
   { label: "Job title", value: "Not provided", icon: UserRound },

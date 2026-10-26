@@ -11,6 +11,8 @@ import { ProgressPageLayout } from "@/components/progress-page-layout";
 
 export const metadata = { title: "Progress Overview" };
 
+export const instant = false;
+
 const achievements = [
   { label: "Certificates", value: "23", icon: BadgeCheck, color: "text-sky-300" },
   { label: "Catalog applied courses", value: "2", icon: BookOpenCheck, color: "text-orange-300" },

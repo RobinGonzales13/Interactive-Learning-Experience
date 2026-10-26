@@ -3,6 +3,8 @@ import { ProgressPageLayout } from "@/components/progress-page-layout";
 
 export const metadata = { title: "Learning Timeline" };
 
+export const instant = false;
+
 export default function ProgressTimelinePage() {
   return (
     <ProgressPageLayout activeTab="Timeline">

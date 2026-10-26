@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useAppearance } from "@/components/appearance-provider";
+import { endDemoSession } from "@/lib/demo-auth";
 
 import {
   Avatar,
@@ -45,6 +46,14 @@ export function NavUser({
   const { isMobile } = useSidebar();
   const { appearance, toggleAppearance } = useAppearance();
   const isDark = appearance === "dark";
+  const signOut = () => {
+    try {
+      endDemoSession();
+      router.replace("/login");
+    } catch {
+      window.alert("Unable to sign out. Please close this tab and try again.");
+    }
+  };
   const initials = user.name
     .split(" ")
     .map((part) => part[0])
@@ -128,7 +137,7 @@ export function NavUser({
               </button>
             </div>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => router.push("/")}>
+            <DropdownMenuItem onClick={signOut}>
               <LogOutIcon />
               Log out
             </DropdownMenuItem>

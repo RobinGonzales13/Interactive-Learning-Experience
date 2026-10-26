@@ -3,6 +3,8 @@ import { DevelopmentPage } from "@/components/development-page";
 
 export const metadata = { title: "Skills Assessment" };
 
+export const instant = false;
+
 export default function SkillsAssessmentPage() {
   return (
     <DevelopmentPage

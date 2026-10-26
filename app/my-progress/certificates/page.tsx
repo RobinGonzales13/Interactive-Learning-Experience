@@ -3,6 +3,8 @@ import { ProgressPageLayout } from "@/components/progress-page-layout";
 
 export const metadata = { title: "Certificates" };
 
+export const instant = false;
+
 const certificates = [
   {
     course: "Cyber Security Awareness",

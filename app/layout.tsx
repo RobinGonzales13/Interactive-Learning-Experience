@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AppearanceProvider } from "@/components/appearance-provider";
+import { SessionGate } from "@/components/session-gate";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
@@ -22,7 +23,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <AppearanceProvider>
-          <TooltipProvider>{children}</TooltipProvider>
+          <TooltipProvider>
+            <SessionGate>{children}</SessionGate>
+          </TooltipProvider>
         </AppearanceProvider>
       </body>
     </html>
